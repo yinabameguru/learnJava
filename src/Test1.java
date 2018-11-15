@@ -1,6 +1,9 @@
-import java.util.ArrayList;
+import org.junit.Test;
 
-public class Test {
+import java.util.ArrayList;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+
+public class Test1 {
     public static void main(String[] args) {
 //        ClassC c = new ClassC();
         ArrayList<Integer> arr = new ArrayList<>();
@@ -14,4 +17,16 @@ public class Test {
         }
 //        arr.remove(15);
     }
+
+    @Test
+    public void Test1(){
+        int num1 = 0, num2 = 1;
+        num1 = num2 = 2;
+        System.out.println(num1 + " " + num2);
+    }
+
+}
+
+class Test2 extends AbstractQueuedSynchronizer {
+
 }

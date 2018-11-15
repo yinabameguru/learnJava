@@ -2,6 +2,7 @@ package concurrent;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 public class DefaultThreadPool2<Job extends Runnable> implements ThreadPool<Job> {
     private static final int DEFAULT_SIZE = 10;
