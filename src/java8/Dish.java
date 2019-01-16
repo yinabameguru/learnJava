@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Dish {
 
-    private final String name;
-    private final boolean vegetarian;
-    private final int calories;
-    private final Type type;
+    private String name;
+    private boolean vegetarian;
+    private int calories;
+    private Type type;
 
     public static List<Dish> getMenu() {
         List<Dish> menu = Arrays.asList(
@@ -53,4 +53,20 @@ public class Dish {
     }
 
     public enum Type {MEAT, FISH, OTHER}
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setVegetarian(boolean vegetarian) {
+        this.vegetarian = vegetarian;
+    }
+
+    public void setCalories(int calories) {
+        this.calories = calories;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 }
