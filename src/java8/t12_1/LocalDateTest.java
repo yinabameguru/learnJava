@@ -6,9 +6,12 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
+import java.time.OffsetDateTime;
 import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.time.chrono.ChronoPeriod;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
@@ -21,6 +24,7 @@ import java.time.temporal.TemporalField;
 import java.time.temporal.TemporalUnit;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 import org.junit.Test;
 
 public class LocalDateTest {
@@ -100,16 +104,16 @@ public class LocalDateTest {
         System.out.println(localDateTime13 + ",now:" + LocalDateTime.now());
 //        LocalDateTime localDateTime14 = LocalDateTime.now().with(ChronoField.INSTANT_SECONDS, 1);
 //        System.out.println(localDateTime14 + ",now:" + LocalDateTime.now());
-        //一天开始的LocalDateTime 2019-01-18T00:00，精确到微妙
+        //精确到微妙
         LocalDateTime localDateTime14 = LocalDateTime.now().with(ChronoField.MICRO_OF_DAY, 1);
         System.out.println(localDateTime14 + ",now:" + LocalDateTime.now());
         //this精确到秒2019-01-18T17:30:36
         LocalDateTime localDateTime15 = LocalDateTime.now().with(ChronoField.MICRO_OF_SECOND, 0);
         System.out.println(localDateTime15 + ",now:" + LocalDateTime.now());
-        //一天开始的LocalDateTime 2019-01-18T00:00，精确到毫秒
+        //精确到毫秒
         LocalDateTime localDateTime16 = LocalDateTime.now().with(ChronoField.MILLI_OF_DAY, 1);
         System.out.println(localDateTime16 + ",now:" + LocalDateTime.now());
-        //一天开始的LocalDateTime 2019-01-18T00:00，精确到纳秒
+        //精确到纳秒
         LocalDateTime localDateTime17 = LocalDateTime.now().with(ChronoField.NANO_OF_DAY, 1);
         System.out.println(localDateTime17 + ",now:" + LocalDateTime.now());
 //        LocalDateTime localDateTime18 = LocalDateTime.now().with(ChronoField.OFFSET_SECONDS, 1);
@@ -140,6 +144,22 @@ public class LocalDateTest {
         System.out.println(format2);
         String format3 = LocalDateTime.now().format(DateTimeFormatter.ISO_WEEK_DATE);
         System.out.println(format3);
+        LocalDate parse = LocalDate.parse("2014-03-18", DateTimeFormatter.ISO_LOCAL_DATE);
+        System.out.println(parse);
+//        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+//        String format4 = LocalDate.now().format(dateTimeFormatter);
+//        System.out.println(format4);
+        ZonedDateTime zonedDateTime = LocalDateTime.now().atZone(TimeZone.getDefault().toZoneId());
+        System.out.println(zonedDateTime + ",now:" + LocalDateTime.now());
+        //一天 开始
+        LocalDateTime localDateTime26 = LocalDate.now().atStartOfDay();
+        System.out.println(localDateTime26);
+        ZonedDateTime zonedDateTime1 = Instant.now().atZone(TimeZone.getDefault().toZoneId());
+        System.out.println(zonedDateTime1);
+        OffsetDateTime offsetDateTime = OffsetDateTime.now();
+        System.out.println(offsetDateTime);
+        System.out.println(offsetDateTime.toInstant().toEpochMilli() + ", " + new Date().getTime());
+        System.out.println(zonedDateTime.toInstant().toEpochMilli() + ", " + new Date().getTime());
 
 //        LocalDateTime localDateTime12 = LocalDateTime.of(LocalDate.now(), LocalTime.of(0, 0));
 //        System.out.println(localDateTime12 + ",now:" + LocalDateTime.now());
