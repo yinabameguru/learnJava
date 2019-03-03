@@ -19,7 +19,7 @@ public class Test1 {
     }
 
     @Test
-    public void Test1(){
+    public void test1(){
         int num1 = 0, num2 = 1;
         num1 = num2 = 2;
         System.out.println(num1 + " " + num2);
